@@ -1,4 +1,4 @@
-package umb.cliente.clienteumb;
+package umb.cliente.clienteumb.controller;
 
 import java.io.*;
 import javax.servlet.http.*;
@@ -9,7 +9,7 @@ public class HelloServlet extends HttpServlet {
     private String message;
 
     public void init() {
-        message = "Hello World!";
+        message = "Hello Nelson!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
