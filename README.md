@@ -1,5 +1,8 @@
 
 
+## MySQL.
+`docker-compose up`
+
 ## Install dependencies.
 `gradle build --refresh-dependencies`
 
