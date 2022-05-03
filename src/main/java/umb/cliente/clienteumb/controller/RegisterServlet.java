@@ -1,15 +1,19 @@
 package umb.cliente.clienteumb.controller;
 
-import java.io.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
+
+@WebServlet(name = "registerServlet", value = "/register")
+public class RegisterServlet extends HttpServlet {
     private String message;
 
     public void init() {
-        message = "Hello Nelson!";
+        message = "Soy registro de usuarios";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -20,8 +24,5 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
-    }
-
-    public void destroy() {
     }
 }
