@@ -1,26 +1,57 @@
 package umb.cliente.clienteumb.repository;
 
+import umb.cliente.clienteumb.model.dao.UserDAO;
 import umb.cliente.clienteumb.model.dto.UserDTO;
-import umb.cliente.clienteumb.service.IUserService;
 
-public class UserRepository implements IUserService {
-    @Override
-    public UserDTO getUser(Integer id) {
-        return null;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
+public class UserRepository implements IUserRepository {
+
+    private EntityManager em;
+
+    public UserRepository() {
+        this.em = Persistence.createEntityManagerFactory("default").createEntityManager();
     }
 
     @Override
-    public UserDTO createUser(UserDTO client) {
-        return null;
+    public UserDAO getUser(Integer id) {
+        return em.find(UserDAO.class, id);
     }
 
     @Override
-    public UserDTO updateUser(UserDTO client) {
-        return null;
+    public UserDAO createUser(UserDAO userDAO) {
+        if (userDAO.getId() == null) {
+            em.getTransaction().begin();
+            em.persist(userDAO);
+            em.getTransaction().commit();
+        } else {
+            em.getTransaction().begin();
+            userDAO = em.merge(userDAO);
+            em.getTransaction().commit();
+        }
+        return userDAO;
     }
 
     @Override
-    public UserDTO deleteUser(Integer Id) {
-        return null;
+    public UserDAO updateUser(UserDAO userDAO) {
+        return createUser(userDAO);
+    }
+
+    @Override
+    public void deleteUser(UserDAO userDAO) {
+        if (em.contains(userDAO)) {
+            em.remove(userDAO);
+        } else {
+            em.merge(userDAO);
+        }
+    }
+
+    @Override
+    public UserDAO getUserEmail(String email) {
+        TypedQuery<UserDAO> q = em.createQuery("SELECT b FROM UserDAO b WHERE b.email = :email", UserDAO.class);
+        q.setParameter("email", email);
+        return q.getSingleResult();
     }
 }

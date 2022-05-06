@@ -9,10 +9,10 @@ import javax.servlet.annotation.WebListener;
 
 @WebListener
 public class LocalEntityManagerFactory implements ServletContextListener{
-    private static EntityManagerFactory emf;
+    protected static EntityManagerFactory emf;
+
     @Override
     public void contextInitialized(ServletContextEvent event) {
-
         emf = Persistence.createEntityManagerFactory("default");
     }
     @Override
