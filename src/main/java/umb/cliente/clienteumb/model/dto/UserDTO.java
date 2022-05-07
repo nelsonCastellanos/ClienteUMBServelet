@@ -53,6 +53,7 @@ public class UserDTO {
     }
 
     public UserDTO(UserDAO userDAO) {
+        this.id = userDAO.getId();
         this.email = userDAO.getEmail();
         this.password = userDAO.getPassword();
         this.username = userDAO.getUsername();

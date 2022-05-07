@@ -1,16 +1,30 @@
 package umb.cliente.clienteumb.model.dao;
 
 
+import umb.cliente.clienteumb.model.dto.ClientDTO;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "client_umb")
 public class ClientDAO {
+    public ClientDAO(){}
+    public ClientDAO(ClientDTO client){
+        this.id = client.getId();
+        this.typeId = client.getTypeId();
+        this.nroId = client.getNroId();
+        this.name = client.getName();
+        this.lastName = client.getLastName();
+        this.user = client.getUser();
+        this.phoneNumber = client.getPhoneNumber();
+        this.email = client.getEmail();
+    }
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TypeIdDAO typeId;
 
     @Column
@@ -22,7 +36,7 @@ public class ClientDAO {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private UserDAO user;
 
     @Column(name = "phone_number")

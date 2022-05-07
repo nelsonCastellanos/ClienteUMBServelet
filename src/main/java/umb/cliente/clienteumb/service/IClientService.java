@@ -2,10 +2,14 @@ package umb.cliente.clienteumb.service;
 
 
 import umb.cliente.clienteumb.model.dto.ClientDTO;
+import umb.cliente.clienteumb.model.dto.UserDTO;
+
+import java.util.List;
 
 public interface IClientService {
-    public ClientDTO getClient(Integer id);
-    public ClientDTO createClient(ClientDTO client);
-    public ClientDTO updateClient(ClientDTO client);
-    public ClientDTO deleteClient(Integer Id);
+    ClientDTO getClient(Integer id);
+    ClientDTO createClient(ClientDTO client);
+    ClientDTO updateClient(ClientDTO client);
+    ClientDTO deleteClient(Integer Id);
+    List<ClientDTO> getAll(UserDTO userDTO);
 }

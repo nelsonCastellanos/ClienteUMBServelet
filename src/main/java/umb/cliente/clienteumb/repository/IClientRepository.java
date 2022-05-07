@@ -1,16 +1,19 @@
 package umb.cliente.clienteumb.repository;
 
+import umb.cliente.clienteumb.model.dao.ClientDAO;
 import umb.cliente.clienteumb.model.dao.UserDAO;
 import umb.cliente.clienteumb.model.dto.ClientDTO;
 
+import java.util.List;
+
 public interface IClientRepository {
-    public ClientDTO getClient(Integer id);
+    ClientDAO getClient(Integer id);
 
-    public ClientDTO getAllClient(UserDAO user);
+    List<ClientDAO> getAllClient(UserDAO user);
 
-    public ClientDTO createClient(ClientDTO client);
+    ClientDAO createClient(ClientDAO client);
 
-    public ClientDTO updateClient(ClientDTO client);
+    ClientDAO updateClient(ClientDAO client);
 
-    public ClientDTO deleteClient(ClientDTO Id);
+    ClientDAO deleteClient(ClientDAO Id);
 }

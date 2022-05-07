@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 public class UserRepository implements IUserRepository {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     public UserRepository() {
         this.em = Persistence.createEntityManagerFactory("default").createEntityManager();

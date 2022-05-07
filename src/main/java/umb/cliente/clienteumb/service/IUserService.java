@@ -5,10 +5,10 @@ import umb.cliente.clienteumb.model.dto.UserDTO;
 
 
 public interface IUserService {
-    public UserDTO getUser(Integer id);
-    public UserDTO createUser(UserDTO userDTO);
-    public UserDTO updateUser(UserDTO userDTO);
-    public UserDTO deleteUser(Integer Id);
+    UserDTO getUser(Integer id);
+    UserDTO createUser(UserDTO userDTO);
+    UserDTO updateUser(UserDTO userDTO);
+    UserDTO deleteUser(Integer Id);
 
-    public UserDTO getUserEmail(String email);
+    UserDTO getUserEmail(String email);
 }

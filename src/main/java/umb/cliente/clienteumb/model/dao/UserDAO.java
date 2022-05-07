@@ -11,6 +11,7 @@ public class UserDAO {
     public UserDAO() {}
 
     public UserDAO(UserDTO userDTO) {
+        this.id = userDTO.getId();
         this.email = userDTO.getEmail();
         this.password = userDTO.getPassword();
         this.username = userDTO.getUsername();

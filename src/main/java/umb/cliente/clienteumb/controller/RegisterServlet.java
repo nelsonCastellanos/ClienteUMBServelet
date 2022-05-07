@@ -35,18 +35,12 @@ public class RegisterServlet extends HttpServlet {
         try{
             iUserService.getUserEmail(email);
             request.setAttribute("message", "User already exists.");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+            requestDispatcher.forward(request, response);
         }catch (NoResultException entityNotFoundException){
             UserDTO userDTO = new UserDTO(username, password, email);
             iUserService.createUser(userDTO);
-            HttpSession jsession = request.getSession();
-            jsession.setAttribute("user", userDTO);
-            response.addCookie(new Cookie("JSESSIONID", jsession.getId()));
-
-            // Always at end
-            path = "/client/index.jsp";
-        }finally {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
-            requestDispatcher.forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/login");
         }
     }
 }

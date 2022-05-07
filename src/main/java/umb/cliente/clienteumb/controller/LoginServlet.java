@@ -36,17 +36,18 @@ public class LoginServlet extends HttpServlet {
             UserDTO userDTO = iUserService.getUserEmail(email);
             boolean passwordMatch = PasswordUtils.verifyUserPassword(password, userDTO.getPassword(), userDTO.getSalt());
             if (passwordMatch) {
-                path = "/client/index.jsp";
+                path = "/client";
             }
             HttpSession jsession = request.getSession();
             jsession.setAttribute("user", userDTO);
             response.addCookie(new Cookie("JSESSIONID", jsession.getId()));
+            response.sendRedirect(request.getContextPath() + "/" + path);
         }catch (NoResultException entityNotFoundException){
             System.out.println("user not found " + email);
             request.setAttribute("message", "The user does not exist, please check your credentials and try again.");
-        }finally {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
             requestDispatcher.forward(request, response);
+        }finally {
         }
     }
 }

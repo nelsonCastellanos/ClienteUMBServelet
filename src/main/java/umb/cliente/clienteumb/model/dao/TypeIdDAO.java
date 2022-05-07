@@ -2,11 +2,12 @@ package umb.cliente.clienteumb.model.dao;
 
 
 import javax.persistence.*;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "type_id_umb")
 public class TypeIdDAO {
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -38,6 +39,13 @@ public class TypeIdDAO {
     }
 
     public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TypeIdDAO(){}
+    public TypeIdDAO(Integer id, String name, String description) {
+        this.id = id;
+        this.name = name;
         this.description = description;
     }
 }
