@@ -11,7 +11,7 @@ public class ClientDAO {
     private Integer id;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private TypeIdDAO tipoId;
+    private TypeIdDAO typeId;
 
     @Column
     private String nroId;
@@ -24,9 +24,6 @@ public class ClientDAO {
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private UserDAO user;
-
-    @Column
-    private String password;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -42,12 +39,12 @@ public class ClientDAO {
         this.id = id;
     }
 
-    public TypeIdDAO getTipoId() {
-        return tipoId;
+    public TypeIdDAO getTypeId() {
+        return typeId;
     }
 
-    public void setTipoId(TypeIdDAO tipoId) {
-        this.tipoId = tipoId;
+    public void setTypeId(TypeIdDAO typeId) {
+        this.typeId = typeId;
     }
 
     public String getNroId() {
@@ -80,14 +77,6 @@ public class ClientDAO {
 
     public void setUser(UserDAO user) {
         this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getPhoneNumber() {

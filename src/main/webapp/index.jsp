@@ -19,6 +19,7 @@
               Don't have an account ?
               <a href="register" onclick="toggleForm();">Sign Up.</a>
             </p>
+            <p style="color:red">${message}</p>
           </form>
         </div>
       </div>

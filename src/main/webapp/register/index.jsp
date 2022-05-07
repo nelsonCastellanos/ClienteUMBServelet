@@ -19,7 +19,8 @@
               Already have an account ?
               <a href="login" onclick="toggleForm();">Sign in.</a>
             </p>
-          </form>
+            <p style="color:red">${message}</p>
+        </form>
         </div>
         <div class="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg" alt="" /></div>
       </div>

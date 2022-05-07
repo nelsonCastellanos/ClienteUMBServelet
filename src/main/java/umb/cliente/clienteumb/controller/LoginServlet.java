@@ -9,9 +9,7 @@ import javax.persistence.NoResultException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -40,8 +38,12 @@ public class LoginServlet extends HttpServlet {
             if (passwordMatch) {
                 path = "/client/index.jsp";
             }
+            HttpSession jsession = request.getSession();
+            jsession.setAttribute("user", userDTO);
+            response.addCookie(new Cookie("JSESSIONID", jsession.getId()));
         }catch (NoResultException entityNotFoundException){
             System.out.println("user not found " + email);
+            request.setAttribute("message", "The user does not exist, please check your credentials and try again.");
         }finally {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
             requestDispatcher.forward(request, response);

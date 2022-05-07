@@ -8,9 +8,7 @@ import javax.persistence.NoResultException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 
@@ -36,9 +34,15 @@ public class RegisterServlet extends HttpServlet {
         String path = "/register/index.jsp";
         try{
             iUserService.getUserEmail(email);
+            request.setAttribute("message", "User already exists.");
         }catch (NoResultException entityNotFoundException){
             UserDTO userDTO = new UserDTO(username, password, email);
             iUserService.createUser(userDTO);
+            HttpSession jsession = request.getSession();
+            jsession.setAttribute("user", userDTO);
+            response.addCookie(new Cookie("JSESSIONID", jsession.getId()));
+
+            // Always at end
             path = "/client/index.jsp";
         }finally {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
