@@ -8,13 +8,15 @@
     <section class="wrap-container">
         <div class="cont container">
             <div class="wrap-container-text">
-                <p>Drop your inquiry here and our experts will get back to you.</p>
-                <h6>Address</h6>
+                <p>UMB Creación de clientes.</p>
+                <h6>Cliente</h6>
                 <p class="address">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, rerum.
+                    "Por fin he entendido lo que significa 'upward compatible' (compatible hacia arriba). Significa que mantenemos todos nuestros viejos errores"
+
+                    -- Dennie van Tassel
                 </p>
                 <h6>Email</h6>
-                <p class="mail">wrap-containerus@gmail.com</p>
+                <p class="mail">nelsongarzon0000@gmail.com@gmail.com</p>
             </div>
             <div class="wrap-container-form">
                  <form action="login" method="post">
