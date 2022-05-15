@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "user_umb")
+@Table(name = "user", schema = "umb")
 public class UserDAO {
     public UserDAO() {}
 
@@ -73,4 +73,5 @@ public class UserDAO {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

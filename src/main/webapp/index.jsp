@@ -3,7 +3,8 @@
 <head>
     <title>UMB Clientes</title>
     <link rel="stylesheet" href="index.css">
-</head>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    </head>
   <body>
     <section class="wrap-container">
         <div class="cont container">

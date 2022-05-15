@@ -1,26 +1,28 @@
 package umb.cliente.clienteumb.model.dao;
 
+import umb.cliente.clienteumb.model.dto.CommercialAreaDTO;
 
 import javax.persistence.*;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@Table(name = "type_id", schema = "umb")
-public class TypeIdDAO {
+@Table(name = "comercial_area", schema = "umb")
+public class CommercialAreaDAO {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
+    @Column
     private String name;
 
-    @Column(unique = true)
+    @Column
     private String description;
 
-    public TypeIdDAO(String name, String description) {
-        this.name = name;
-        this.description = description;
+
+    public CommercialAreaDAO(){}
+    public CommercialAreaDAO(CommercialAreaDTO commercialArea) {
+        this.id = commercialArea.getId();
+        this.description = commercialArea.getDescription();
+        this.name = commercialArea.getName();
     }
 
     public Integer getId() {
@@ -44,13 +46,6 @@ public class TypeIdDAO {
     }
 
     public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public TypeIdDAO(){}
-    public TypeIdDAO(Integer id, String name, String description) {
-        this.id = id;
-        this.name = name;
         this.description = description;
     }
 }

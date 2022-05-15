@@ -7,4 +7,6 @@ import java.util.Set;
 public interface ITypeIdService {
 
     Set<TypeIdDAO> getAll();
+
+    TypeIdDAO create(TypeIdDAO typeIdDAO);
 }

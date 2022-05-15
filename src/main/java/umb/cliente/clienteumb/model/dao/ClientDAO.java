@@ -6,7 +6,7 @@ import umb.cliente.clienteumb.model.dto.ClientDTO;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client_umb")
+@Table(name = "client", schema = "umb")
 public class ClientDAO {
     public ClientDAO(){}
     public ClientDAO(ClientDTO client){

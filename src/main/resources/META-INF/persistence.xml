@@ -8,6 +8,8 @@
         <class>umb.cliente.clienteumb.model.dao.ClientDAO</class>
         <class>umb.cliente.clienteumb.model.dao.TypeIdDAO</class>
         <class>umb.cliente.clienteumb.model.dao.UserDAO</class>
+        <class>umb.cliente.clienteumb.model.dao.CommercialAreaDAO</class>
+        <class>umb.cliente.clienteumb.model.dao.EmployeeDAO</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>

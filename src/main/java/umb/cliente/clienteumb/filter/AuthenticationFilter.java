@@ -14,7 +14,7 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
-        String loginPath = "login";
+        String loginPath = "/login";
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
@@ -25,7 +25,7 @@ public class AuthenticationFilter implements Filter {
 
         HttpSession session = request.getSession(false);
         String context  = request.getContextPath();
-        String[] whiteList = {context+"/"+loginPath, context+"/register"};
+        String[] whiteList = {context+loginPath, context+"/register"};
 
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         boolean authRequest =  Arrays.asList(whiteList).contains(request.getRequestURI());
@@ -34,7 +34,7 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             request.setAttribute("message", "You must login before continuing.");
-            response.sendRedirect(loginPath);
+            response.sendRedirect(context+loginPath);
         }
     }
 }

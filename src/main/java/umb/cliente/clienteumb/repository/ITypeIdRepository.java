@@ -7,4 +7,6 @@ import java.util.Set;
 public interface ITypeIdRepository {
 
     Set<TypeIdDAO> getAll();
+
+    TypeIdDAO create(TypeIdDAO typeIdDAO);
 }

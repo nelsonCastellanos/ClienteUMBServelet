@@ -11,8 +11,8 @@
 
 
 	<div class="topnav" id="myTopnav">
-		<a href="client" class="active" aria-hidden="true">Client <i class="fa fa-book"></i></a>
-		<a href="employee">Employee <i class="fa fa-envelope"></i></a>
+		<a href="client">Client <i class="fa fa-book"></i></a>
+		<a href="employee" class="active" aria-hidden="true">Employee <i class="fa fa-envelope"></i></a>
 		<a href="comercialArea">Comercial Area <i class="fa fa-book"></i></a>
 		<a href="typeIds">Type Ids<i class="fa fa-book"></i></a>
 		<a href="logout">Logout <i class="fa fa-envelope"></i></a>
@@ -20,18 +20,16 @@
 	<section class="wrap-container">
         <div class="cont container">
             <div class="wrap-container-form">
-				<form action="client" method="post">
-					<h2>Create an client</h2>
-					<select name="typeId">
-						<c:forEach var="item" items="${typeIds}">
+				<form action="employee" method="post">
+					<h2>Create an employee</h2>
+					<select name="employeeCommercialArea">
+						<c:forEach var="item" items="${commercialAreas}">
 							<option value="${item.id}">${item.name}</option>
 						</c:forEach>
 					</select>
-					<input type="text" name="nroId" placeholder="Number Id" required />
-					<input type="text" name="name" placeholder="Name" required />
-					<input type="text" name="lastName" placeholder="Last Name" required />
-					<input type="text" name="phoneNumber" placeholder="Phone Number" required />
-					<input type="email" name="email" placeholder="Email" required />
+					<input type="text" name="employeeName" placeholder="Name" required />
+					<input type="text" name="employeeLastName" placeholder="Last Name" required />
+					<input type="text" name="employeePhone" placeholder="Phone" required />
 					<input type="submit" name="" value="Create" />
 					<p style="color:red">${message}</p>
 				</form>
@@ -40,35 +38,31 @@
 				<!-- Responsive Table Header Section -->
 				<thead class="responsive-table__head">
 					<tr class="responsive-table__row">
-						<th class="responsive-table__head__title responsive-table__head__title--typeId">Type ID</th>
-						<th class="responsive-table__head__title responsive-table__head__title--nroId">Nro Id</th>
-						<th class="responsive-table__head__title responsive-table__head__title--name">Name</th>
-						<th class="responsive-table__head__title responsive-table__head__title--lastName">Last Name</th>
-						<th class="responsive-table__head__title responsive-table__head__title--phoneNumber">Phone Number</th>
-						<th class="responsive-table__head__title responsive-table__head__title--email">Email</th>
+						<th class="responsive-table__head__title responsive-table__head__title--typeId">Name</th>
+						<th class="responsive-table__head__title responsive-table__head__title--nroId">Last Name</th>
+						<th class="responsive-table__head__title responsive-table__head__title--name">Phone</th>
+						<th class="responsive-table__head__title responsive-table__head__title--lastName">Comercial Area</th>
+						<th class="responsive-table__head__title responsive-table__head__title--phoneNumber">User Creator</th>
 					</tr>
 				</thead>
 				<!-- Responsive Table Body Section -->
 				<tbody class="responsive-table__body">
-					<c:forEach var="client" items="${clients}">
+					<c:forEach var="employee" items="${employees}">
 						<tr class="responsive-table__row">
 							<td class="responsive-table__body__text responsive-table__body__text--typeId">
-								${client.typeId.name}
+								${employee.name}
 							</td>
 							<td class="responsive-table__body__text responsive-table__body__text--nroId">
-								${client.nroId}
+								${employee.lastname}
 							</td>
 							<td class="responsive-table__body__text responsive-table__body__text--name">
-								${client.name}
+								${employee.phone}
 							</td>
 							<td class="responsive-table__body__text responsive-table__body__text--lastName">
-								${client.lastName}
+								${employee.commercialArea.name}
 							</td>
 							<td class="responsive-table__body__text responsive-table__body__text--phoneNumber">
-								${client.phoneNumber}
-							</td>
-							<td class="responsive-table__body__text responsive-table__body__text--email">
-								${client.email}
+								${employee.user.username}
 							</td>
 						</tr>
 					</c:forEach>
